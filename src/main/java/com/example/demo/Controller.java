@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 public class Controller {
+    private final String name = "Javax";
 
     @GetMapping(path = "/")
     public Department getInfo() {
@@ -22,7 +23,7 @@ public class Controller {
                 .build();
         return Department.builder()
                 .id(2L)
-                .departmentName("Java")
+                .departmentName(name)
                 .headOfDepartment(head)
                 .lectors(List.of(
                         head,
@@ -39,5 +40,10 @@ public class Controller {
                                 .salary(BigDecimal.valueOf(750.0))
                                 .build()))
                 .build();
+    }
+
+    @GetMapping(path = "/name")
+    public String getName() {
+        return name;
     }
 }
